@@ -1,13 +1,13 @@
-package com.example.onlineexamation.ui.login
+package com.example.onlineexamination.ui.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
-import com.example.onlineexamation.data.LoginRepository
-import com.example.onlineexamation.data.Result
+import com.example.onlineexamination.data.LoginRepository
+import com.example.onlineexamination.data.Result
 
-import com.example.onlineexamation.R
+import com.example.onlineexamination.R
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 

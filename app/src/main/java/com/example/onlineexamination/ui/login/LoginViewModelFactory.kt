@@ -1,9 +1,9 @@
-package com.example.onlineexamation.ui.login
+package com.example.onlineexamination.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.onlineexamation.data.LoginDataSource
-import com.example.onlineexamation.data.LoginRepository
+import com.example.onlineexamination.data.LoginDataSource
+import com.example.onlineexamination.data.LoginRepository
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

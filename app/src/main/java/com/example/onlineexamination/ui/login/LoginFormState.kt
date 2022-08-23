@@ -1,4 +1,4 @@
-package com.example.onlineexamation.ui.login
+package com.example.onlineexamination.ui.login
 
 /**
  * Data validation state of the login form.
