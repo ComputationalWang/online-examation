@@ -14,6 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.onlineexamination.R
 import com.example.onlineexamination.data.Database
+import com.example.onlineexamination.data.model.database.ExamDatabase
 import com.example.onlineexamination.databinding.ActivityLoginBinding
 
 
@@ -27,8 +28,6 @@ class LoginActivity : AppCompatActivity() {
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val db = Database()
 
         val username = binding.username
         val password = binding.password

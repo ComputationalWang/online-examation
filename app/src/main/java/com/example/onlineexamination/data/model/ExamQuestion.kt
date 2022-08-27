@@ -4,10 +4,13 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "exam_questions")
+@Entity(tableName = "exam_question")
 data class ExamQuestion(
 
-    @ColumnInfo(name = "questionName")
+    @ColumnInfo(name = "exam_id")
+    var examId: Int?,
+
+    @ColumnInfo(name = "question_name")
     var questionName: String,
 
     @ColumnInfo(name = "answer")
