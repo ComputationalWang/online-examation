@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidDev/projects/OnlineExamation/app/src/main/res/layout/activity_login.xml" value="0.1038500506585613" />
+        <entry key="..\:/AndroidDev/projects/OnlineExamination/app/src/main/res/layout/activity_dashboard.xml" value="0.40217391304347827" />
         <entry key="..\:/AndroidDev/projects/OnlineExamination/app/src/main/res/layout/activity_login.xml" value="0.21354166666666666" />
+        <entry key="..\:/AndroidDev/projects/OnlineExamination/app/src/main/res/layout/activity_main.xml" value="0.40217391304347827" />
       </map>
     </option>
   </component>

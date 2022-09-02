@@ -37,5 +37,4 @@ abstract class ExamDatabase : RoomDatabase() {
                 "Exam.db"
             ).build()
     }
-
 }

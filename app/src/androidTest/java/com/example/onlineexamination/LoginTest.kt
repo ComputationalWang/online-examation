@@ -3,8 +3,9 @@ package com.example.onlineexamination
 import androidx.test.core.app.ActivityScenario.launch
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
-import com.example.onlineexamination.ui.login.LoginActivity
+import com.example.onlineexamination.ui.sign.SignInActivity
 import org.junit.Before
+import org.junit.Test
 
 import org.junit.runner.RunWith
 
@@ -19,8 +20,11 @@ class LoginTest {
 
     @Before
     fun setup() {
-        launch(LoginActivity::class.java)
+        launch(SignInActivity::class.java)
     }
 
+    @Test
+    fun test_password() {
 
+    }
 }

@@ -41,4 +41,6 @@ class DatabaseTest {
         val getAll: List<Exam> = (examDao.getAllExams())
         assert(getAll[0].title == "Test")
     }
+
+
 }
