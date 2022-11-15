@@ -1,5 +1,6 @@
 package com.example.onlineexamination.ui.sign
 
+import android.content.Intent
 import android.content.IntentSender
 import android.os.Bundle
 import android.util.Log
@@ -7,7 +8,9 @@ import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.onlineexamination.R
+import com.example.onlineexamination.data.model.SavedPreference
 import com.example.onlineexamination.databinding.ActivityLoginBinding
+import com.example.onlineexamination.ui.dashboard.DashboardActivity
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
@@ -30,24 +33,28 @@ class SignInActivity : AppCompatActivity() {
         try {
             val credential = oneTapClient?.getSignInCredentialFromIntent(it.data)
             val idToken = credential?.googleIdToken
+            credential?.displayName?.let { it1 -> SavedPreference.setEmail(this, it1) }
+            credential?.givenName?.let { it1 -> SavedPreference.setGivenName(this, it1) }
+
             when {
                 idToken != null -> {
                     val msg = "idToken: $idToken"
                     Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
                     Log.d(logOneTap, msg)
+                    startActivity(Intent(this, DashboardActivity::class.java))
                 }
 
                 else -> {
                     val errorMsg = "No ID Token!"
                     Log.d(logOneTap, errorMsg)
-                    Snackbar.make(binding.root, errorMsg, Snackbar.LENGTH_INDEFINITE).show()
+                    Snackbar.make(binding.root, errorMsg, Snackbar.LENGTH_LONG).show()
                 }
             }
         } catch (e: ApiException) {
             when (e.statusCode) {
                 CommonStatusCodes.CANCELED -> {
                     Log.d(logOneTap, "One-tap dialog was closed")
-                    Snackbar.make(binding.root, "One-tap dialog was closed.", Snackbar.LENGTH_INDEFINITE).show()
+                    Snackbar.make(binding.root, "One-tap dialog was closed.", Snackbar.LENGTH_LONG).show()
                 }
 
                 CommonStatusCodes.NETWORK_ERROR -> {
@@ -62,20 +69,15 @@ class SignInActivity : AppCompatActivity() {
                     Log.d(logOneTap, "Could not get credential info from result. Error: ${e.localizedMessage}")
                     Snackbar.make(
                         binding.root, "Could not get credential info from result. " +
-                                "Error: ${e.localizedMessage}", Snackbar.LENGTH_INDEFINITE
+                                "Error: ${e.localizedMessage}", Snackbar.LENGTH_LONG
                     ).show()
                 }
             }
         }
     }
 
-
-    //    private val REQ_ONE_TAP = 2  // Can be any integer unique to the Activity
-//    private var showOneTapUI = true
-//
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_login)
         _binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
