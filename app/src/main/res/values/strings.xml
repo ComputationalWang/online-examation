@@ -10,4 +10,20 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="logo">Logo</string>
+    <string name="home">Home</string>
+    <string name="exams">Exams</string>
+    <string name="create">Create</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="overview">Overview</string>
+    <string name="manage">Manage</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Log out</string>
+    <string name="info">Info</string>
+    <string name="communicate">Communicate</string>
+    <string name="rate">Rate us</string>
+    <string name="share">Share</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
 </resources>

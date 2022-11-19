@@ -33,8 +33,10 @@ class SignInActivity : AppCompatActivity() {
         try {
             val credential = oneTapClient?.getSignInCredentialFromIntent(it.data)
             val idToken = credential?.googleIdToken
-            credential?.displayName?.let { it1 -> SavedPreference.setEmail(this, it1) }
+            credential?.displayName?.let { it1 -> SavedPreference.setDisplayName(this, it1) }
             credential?.givenName?.let { it1 -> SavedPreference.setGivenName(this, it1) }
+            credential?.profilePictureUri?.let { it1 -> SavedPreference.setProfileUri(this, it1.toString()) }
+
 
             when {
                 idToken != null -> {

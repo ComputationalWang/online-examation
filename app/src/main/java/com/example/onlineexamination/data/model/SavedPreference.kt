@@ -8,6 +8,8 @@ object SavedPreference {
 
     const val EMAIL= "email"
     const val GIVENNAME="given name"
+    const val DISPLAYNAME="display name"
+    const val PROFILEURI = "profile uri"
 
 
     private  fun getSharedPreference(ctx: Context?): SharedPreferences? {
@@ -32,6 +34,18 @@ object SavedPreference {
         )
     }
 
+    fun getDisplayName(context: Context)= getSharedPreference(
+        context
+    )?.getString(DISPLAYNAME,"")
+
+    fun setDisplayName(context: Context, displayName: String){
+        editor(
+            context,
+            DISPLAYNAME,
+            displayName
+        )
+    }
+
     fun setGivenName(context: Context, givenName:String){
         editor(
             context,
@@ -44,6 +58,16 @@ object SavedPreference {
         context
     )?.getString(GIVENNAME,"")
 
+    fun setProfileUri(context: Context, profileUri:String){
+        editor(
+            context,
+            PROFILEURI,
+            profileUri
+        )
+    }
 
+    fun getProfileUri(context: Context) = getSharedPreference(
+        context
+    )?.getString(PROFILEURI,"")
 
 }
