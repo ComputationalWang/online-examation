@@ -25,5 +25,7 @@
     <string name="share">Share</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
 
 </resources>

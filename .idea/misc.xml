@@ -8,8 +8,11 @@
         <entry key="..\:/AndroidDev/projects/OnlineExamination/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.11953125" />
         <entry key="..\:/AndroidDev/projects/OnlineExamination/app/src/main/res/layout-w936dp/activity_login.xml" value="0.14843152257077277" />
         <entry key="..\:/AndroidDev/projects/OnlineExamination/app/src/main/res/layout/activity_dashboard.xml" value="0.40217391304347827" />
+        <entry key="..\:/AndroidDev/projects/OnlineExamination/app/src/main/res/layout/activity_exam_edit.xml" value="0.264" />
+        <entry key="..\:/AndroidDev/projects/OnlineExamination/app/src/main/res/layout/activity_exam_overview.xml" value="0.34057971014492755" />
         <entry key="..\:/AndroidDev/projects/OnlineExamination/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/AndroidDev/projects/OnlineExamination/app/src/main/res/layout/activity_main.xml" value="0.40217391304347827" />
+        <entry key="..\:/AndroidDev/projects/OnlineExamination/app/src/main/res/layout/list_question_item.xml" value="0.264" />
         <entry key="..\:/AndroidDev/projects/OnlineExamination/app/src/main/res/layout/nav_header.xml" value="0.403125" />
         <entry key="..\:/AndroidDev/projects/OnlineExamination/app/src/main/res/layout/side_bar.xml" value="0.4041666666666667" />
         <entry key="..\:/AndroidDev/projects/OnlineExamination/app/src/main/res/menu/nav_menu.xml" value="0.41875" />

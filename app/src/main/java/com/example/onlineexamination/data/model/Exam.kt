@@ -1,7 +1,6 @@
 package com.example.onlineexamination.data.model
 
 import androidx.room.ColumnInfo
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.Date
@@ -18,7 +17,14 @@ class Exam(
     @ColumnInfo(name = "last_modified_at")
     var lastModifiedAt: Date,
 
+    @ColumnInfo(name = "questions")
+    var examQuestions: List<ExamQuestion>?
+
     ) {
     @PrimaryKey(autoGenerate = true)
     var id:Int? = null
+
+    override fun toString(): String {
+        return "Exam: '$title'\nCreated at: $createdAt"
+    }
 }
