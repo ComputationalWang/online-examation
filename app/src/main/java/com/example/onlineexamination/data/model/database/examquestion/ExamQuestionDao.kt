@@ -19,4 +19,7 @@ interface ExamQuestionDao {
 
     @Query("SELECT * FROM exam_question")
     fun getAllExamQuestions(): List<ExamQuestion>
+
+    @Query("SELECT * FROM exam_question WHERE id=:id")
+    fun getExamQuestion(id: Int): ExamQuestion
 }

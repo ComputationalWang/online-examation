@@ -1,24 +1,27 @@
 package com.example.onlineexamination.ui.exam
 
+import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.view.MenuItem
+import android.util.Log
 import android.widget.ArrayAdapter
-import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
-import com.example.onlineexamination.R
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import com.example.onlineexamination.data.model.Exam
 import com.example.onlineexamination.data.model.SavedPreference
+import com.example.onlineexamination.data.model.database.exam.ExamViewModel
+import com.example.onlineexamination.data.model.database.exam.ExamViewModelFactory
+import com.example.onlineexamination.data.model.database.response.ExamResponse
+import com.example.onlineexamination.data.model.database.response.FirebaseCallback
 import com.example.onlineexamination.databinding.ActivityExamOverviewBinding
-import com.example.onlineexamination.ui.dashboard.DashboardActivity
-import com.google.android.material.navigation.NavigationView
-import com.squareup.picasso.Picasso
-import de.hdodenhof.circleimageview.CircleImageView
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QueryDocumentSnapshot
+import com.google.firebase.firestore.QuerySnapshot
 import java.util.*
+
 
 class ExamOverviewActivity : AppCompatActivity() {
 
@@ -26,7 +29,11 @@ class ExamOverviewActivity : AppCompatActivity() {
 //    private var displayName : String? = ""
 //    private var personPhoto: Uri? = null
 
+    private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
+
     private var exams = mutableListOf<Exam>()
+
+    private lateinit var viewModel: ExamViewModel
 
 //    lateinit var toggle : ActionBarDrawerToggle
 
@@ -35,12 +42,15 @@ class ExamOverviewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         _binding = ActivityExamOverviewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
         val listView = binding.listview
 
-        exams.add(Exam("Test", Date(), Date(), null))
+//        val exam = (SavedPreference.getId(this)
+//            ?.let { SavedPreference.getGivenName(this)?.let { it1 -> Exam("Kek", it1, it, Date(), Date(), null) } })
 
 
 //        val drawerLayout : DrawerLayout = binding.ExamOverviewDrawerLayout
@@ -52,15 +62,19 @@ class ExamOverviewActivity : AppCompatActivity() {
 //        drawerLayout.addDrawerListener(toggle)
 //        toggle.syncState()
 
-        val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, exams)
-        listView.adapter = arrayAdapter
+//        val colRef1 = db.collection("exams")
+//        if (exam != null) {
+//            colRef1.add(exam)
+//        }
+
+        val viewModelFactory = ExamViewModelFactory(SavedPreference.getId(this)!!)
+        viewModel = ViewModelProvider(this, viewModelFactory)[ExamViewModel::class.java]
+        getResponseUsingCoroutines()
 
         listView.setOnItemClickListener { parent, view, position, id ->
 
             val exam = exams[position]
             val i = Intent(this, ExamEditActivity::class.java)
-            i.putExtra("title", exam.title)
-            i.putExtra("createdAt", exam.createdAt)
             i.putExtra("id", exam.id)
             startActivity(i)
         }
@@ -84,5 +98,19 @@ class ExamOverviewActivity : AppCompatActivity() {
 //            }
 //            true
 //        }
+    }
+
+    private fun getResponseUsingCoroutines() {
+        viewModel.responseLiveData.observe(this) {
+            if(it.exams != null) {
+                print(it)
+                exams.addAll(it.exams!!)
+
+                val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, exams)
+                binding.listview.adapter = arrayAdapter
+            } else {
+                Log.e(TAG, it.exception?.message.orEmpty())
+            }
+        }
     }
 }

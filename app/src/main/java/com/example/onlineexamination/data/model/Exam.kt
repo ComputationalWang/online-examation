@@ -7,18 +7,24 @@ import java.util.Date
 
 @Entity(tableName = "exam")
 class Exam(
-    @ColumnInfo(name = "title")
-    var title: String,
 
+    @ColumnInfo(name = "title")
+    var title: String? = null,
+
+    @ColumnInfo(name="author")
+    var author : String? = null,
+
+    @ColumnInfo(name="uid")
+    var uid : String? = null,
 
     @ColumnInfo(name = "created_at")
-    var createdAt: Date,
+    var createdAt: Date? = null,
 
     @ColumnInfo(name = "last_modified_at")
-    var lastModifiedAt: Date,
+    var lastModifiedAt: Date? = null,
 
     @ColumnInfo(name = "questions")
-    var examQuestions: List<ExamQuestion>?
+    var examQuestions: List<ExamQuestion>? = null
 
     ) {
     @PrimaryKey(autoGenerate = true)

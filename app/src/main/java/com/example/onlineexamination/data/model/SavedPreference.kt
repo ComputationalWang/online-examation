@@ -6,6 +6,7 @@ import android.preference.PreferenceManager
 
 object SavedPreference {
 
+    const val ID= "uid"
     const val EMAIL= "email"
     const val GIVENNAME="given name"
     const val DISPLAYNAME="display name"
@@ -31,6 +32,18 @@ object SavedPreference {
             context,
             EMAIL,
             email
+        )
+    }
+
+    fun getId(context: Context)= getSharedPreference(
+        context
+    )?.getString(ID,"")
+
+    fun setId(context: Context, id: String){
+        editor(
+            context,
+            ID,
+            id
         )
     }
 
